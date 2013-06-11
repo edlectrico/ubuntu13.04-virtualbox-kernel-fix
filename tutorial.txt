@@ -24,21 +24,19 @@ $ dkms status
 $ dkms install virtualbox/<version> (this will show your current version to be used in the following command)
 $ sudo dkms install virtualbox/<version>
 
-6. If you dont have the kernel headers you will get this error:
+If you dont have the kernel headers you will get this error:
 Error! Your kernel headers for kernel 3.2.0-26-generic cannot be found.
 Please install the linux-headers-3.2.0-26-generic package,
 or use the --kernelsourcedir option to tell DKMS where it's located
 
-7. So we install them:
+6. So we install them:
 $ sudo apt-get install linux-headers-<newest-version>-generic
 
-8. And finally we have to 'start' the modules:
+7. And finally we have to 'start' the modules:
 $ sudo /etc/init.d/virtualbox start
 
 
-
-
-If you try to run $ virtualbox in your terminal and no installation is found, then install it by:
+Now, if you try to run $ virtualbox in your terminal and no installation is found, then install it by:
 $ sudo aptitude install virtualbox-qt
 
 Then run it and you should be able to manage your virtual machines again :)
