@@ -1,0 +1,44 @@
+Since I use Virtualbox in Ubuntu I suffered of several kernel errors each time I updated my Ubuntu distribution.
+This tutorial is a quick step way of solving this issue:
+
+1. Try this:
+$ sudo /etc/init.d/vboxdrv setup
+
+2. You'll probably get the following message:
+WARNING: The character device /dev/vboxdrv does not exist.
+         Please install the virtualbox-ose-dkms package and the appropriate
+         headers, most likely linux-headers-generic.
+
+         You will not be able to start VMs until this problem is fixed.
+
+3. For previous versions of Ubuntu try:
+$ sudo apt-get install virtualbox-ose-dkms
+
+If you're using Ubuntu 13.04 then the package will be virtualbox-dkms, so:
+$ sudo apt-get install virtualbox-dkms
+
+4. Then we can see if the vbox module is added:
+$ dkms status
+
+5. Then install it:
+$ dkms install virtualbox/<version> (this will show your current version to be used in the following command)
+$ sudo dkms install virtualbox/<version>
+
+6. If you dont have the kernel headers you will get this error:
+Error! Your kernel headers for kernel 3.2.0-26-generic cannot be found.
+Please install the linux-headers-3.2.0-26-generic package,
+or use the --kernelsourcedir option to tell DKMS where it's located
+
+7. So we install them:
+$ sudo apt-get install linux-headers-<newest-version>-generic
+
+8. And finally we have to 'start' the modules:
+$ sudo /etc/init.d/virtualbox start
+
+
+
+
+If you try to run $ virtualbox in your terminal and no installation is found, then install it by:
+$ sudo aptitude install virtualbox-qt
+
+Then run it and you should be able to manage your virtual machines again :)
