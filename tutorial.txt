@@ -18,13 +18,12 @@ If you're using Ubuntu 13.04 then the package will be virtualbox-dkms, so:
 $ sudo apt-get install virtualbox-dkms
 
 4. Then we can see if the vbox module is added:
-$ dkms status
+$ dkms status (this will show your current version to be used in the following command)
 
 5. Then install it:
-$ dkms install virtualbox/<version> (this will show your current version to be used in the following command)
 $ sudo dkms install virtualbox/<version>
 
-If you dont have the kernel headers you will get this error:
+If you dont have the kernel headers you will get this error (the linux-headers version will be probably different):
 Error! Your kernel headers for kernel 3.2.0-26-generic cannot be found.
 Please install the linux-headers-3.2.0-26-generic package,
 or use the --kernelsourcedir option to tell DKMS where it's located
